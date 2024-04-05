@@ -5,8 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :user_detail, dependent: :destroy
+  has_one :user_avatar
+  has_one :avatar, through: :user_avatar
 
-  after_create :create_user_details
+  after_create :create_user_details, :set_default_avatar
+
+  private
 
   def create_user_details
     return if  UserDetail.find_by_user_id(self.id).present?
@@ -15,5 +19,11 @@ class User < ApplicationRecord
       user_id:   self.id,
       user_name: self.email.split('@').first
     )
+  end
+
+  def set_default_avatar
+    return if self.avatar.present?
+
+    self.avatar = Avatar.first
   end
 end

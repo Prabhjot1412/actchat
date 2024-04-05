@@ -12,6 +12,10 @@
 
         Sign out
       <% end %>
+
+      <span>
+        <img src='<%= url_for(current_user.avatar.image) %>' width="30" height="30" class='rounded' style='margin-right: 5px; margin-top: 3px;'>
+      </span>
     <% else %>
       <a href='<%= new_user_registration_path %>' class='btn btn-outline-info mx-1'>
         <i class="fa-solid fa-user-plus"></i>
