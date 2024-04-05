@@ -17,8 +17,15 @@ window.onscroll = function(ev) {
       additional_params += 'type=personel&'
     }
 
+    let urlParams = new URLSearchParams(window.location.search);
+    let id = urlParams.get('id')
+    if(!!id) {
+      additional_params += `id=${id}&`
+    }
+
     let base_path = document.head.querySelector("meta[name=base_path]").content
     let res = fetch(`${base_path}posts/${getCookie('page')}${additional_params}`)
+
 
     res.then((response) => {
       return response.json()

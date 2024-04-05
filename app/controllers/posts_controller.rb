@@ -11,7 +11,8 @@ class PostsController < ApplicationController
   end
 
   def fetch_posts
-    data = ::Posts::Fetch.call(type: params[:type], user: current_user, page: params[:page_id]) {|img| url_for(img)}
+    user = params[:id].present? ? User.find_by(id: params[:id]) : current_user
+    data = ::Posts::Fetch.call(type: params[:type], user: user, page: params[:page_id]) {|img| url_for(img)}
 
     render json: data
   end

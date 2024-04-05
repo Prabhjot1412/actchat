@@ -1,0 +1,7 @@
+<%= render 'homepage', active: 'public' do %>
+  <%= render 'personel_page', person: @user%>
+<% end %>
+
+<script>
+  document.cookie = "page="
+</script>

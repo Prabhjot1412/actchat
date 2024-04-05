@@ -46,6 +46,7 @@ export default class extends Controller {
 
           let user_data = document.createElement('a')
           user_data.classList.add('searchbox-user-data')
+          user_data.setAttribute('href', `/home/public?id=${user.id}`)
 
           let user_avatar = document.createElement('img')
           user_avatar.classList.add('rounded')

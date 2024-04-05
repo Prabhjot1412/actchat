@@ -6,4 +6,8 @@ class HomeController < ApplicationController
   def profile ; end
 
   def personel ; end
+
+  def public
+    @user = User.find_by(id: params[:id])
+  end
 end

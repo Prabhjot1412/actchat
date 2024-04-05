@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'landing'
     get 'personel'
     get 'profile'
+    get 'public'
   end
 
   resource :user_detail, only: [:update]
