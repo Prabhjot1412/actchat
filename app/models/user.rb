@@ -53,6 +53,10 @@ class User < ApplicationRecord
     user.notifications.create!(kind: :friend_request, sender: self)
   end
 
+  def send_message(receiver, msg, file: nil)
+    receiver.notifications.create!(data: msg, sender: self, kind: 'chat')
+  end
+
   private
 
   def create_user_details

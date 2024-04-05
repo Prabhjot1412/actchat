@@ -1,0 +1,30 @@
+<%= render 'homepage', active: 'chats' do %>
+  <h1 style='margin-left: 5rem; margin-top: 5px'>Chats</h1>
+
+  <hr style='margin-bottom: 0'>
+
+  <div data-controller='chats' class='d-flex'>
+    <div class='chats-friends-list'>
+      <% current_user.friends.each do |friend| %>
+        <div friend-id='<%= friend.id %>' data-action='click->chats#show_chats' class='d-flex p-2 chats chats-friend-item'>
+          <img src='<%= url_for(friend.avatar.image) %>' width="30" height="30" class='rounded' style='margin-right: 5px; margin-top: 3px;'>
+
+          <span style='align-self: center; padding-left: 15px'> <%= friend.user_name %> </span>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='chats-holder'>
+      <div id='chats-holder' style='width: 60%; margin-left: 15%'>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= form_with do |form| %>
+      <div class="field">
+        <%= form.rich_text_area :content %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

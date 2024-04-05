@@ -22,7 +22,7 @@
 
     <div class='d-flex' style='margin-left: 270px'>
       <div style='margin-right: 10px'>
-        <%= 
+        <%=
           link_to 'Previous',
           "/home/friends_list?page_no=#{params[:page_no] ? (params[:page_no].to_i)-1 : 0}",
           class: "btn btn-outline-primary #{ (params[:page_no].to_i) <= 1 ? 'disabled' : '' }"
@@ -38,5 +38,4 @@
       </div>
     </div>
   <% end %>
-  
 <% end %>

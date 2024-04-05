@@ -1,0 +1,43 @@
+@import 'colors';
+
+.chats-friends-list {
+  min-height: 35rem;
+  min-width: 10rem;
+  background: rgb(240, 240, 240);
+}
+
+.chats-holder {
+  background: $grey;
+  width: -webkit-fill-available;
+}
+
+.chats-friend-item{
+  border: .1px solid rgba(128, 128, 128, 0.351);
+  border-collapse: collapse;
+  border-left: none;
+  border-right: none;
+  background: aliceblue;
+  transition: .3s background, .3s font-size;
+}
+
+.chats-friend-item:hover{
+  background: rgba(250, 235, 215, 0.437);
+}
+
+.chats-friend-item:active{
+  background: rgb(254, 230, 197);
+  font-size: large;
+}
+
+.chats-friend-item-active{
+  border: .1px solid rgba(128, 128, 128, 0.351);
+  border-collapse: collapse;
+  border-left: none;
+  border-right: none;
+  background: antiquewhite;
+}
+
+.chats-message{
+  background: azure;
+  padding: 10px
+}

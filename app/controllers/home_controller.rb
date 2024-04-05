@@ -13,9 +13,13 @@ class HomeController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  def notifications ; end
+  def notifications
+    @notifications.update_all(seen: true)
+  end
 
-  def friends_list
+  def friends_list ; end
+
+  def chats
   end
 
   private

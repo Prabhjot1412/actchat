@@ -31,7 +31,7 @@ export default class extends Controller {
       sidebar.style.minHeight = '0'
       sidebar.style.maxHeight = '700px'
 
-      sidebarExpander.style.left = '46px'
+      sidebarExpander.style.left = '50px'
       sidebarExpander.style.transform = 'rotate(0deg)'
     }
   }

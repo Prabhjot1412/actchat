@@ -45,9 +45,32 @@ class NotificationsController < ApplicationController
     render json: { status: :failure, message: e.message }
   end
 
+  def fetch_chats
+    friend_id = params[:friend_id]
+    raise 'no friend id' unless friend_id.present?
+
+    friend = User.find(friend_id)
+
+    notifications = Notification.chats_with(current_user, friend)
+    data = notifications.as_json
+
+    if data.present?
+      data.map! do |noti|
+        sender = User.find(noti["sender_id"])
+        noti["sender_name"] = sender.user_name
+        noti["sender_avatar_url"] = url_for(sender.avatar.image)
+        noti["sent_by_current?"] = sender == current_user
+
+        noti
+      end
+    end
+
+    render json: data
+  end
+
   private
 
   def broadcast_notification(receiver)
-    ActionCable.server.broadcast("notification-#{receiver.id}", {notification_count: receiver.notifications.count})
+    ActionCable.server.broadcast("notification-#{receiver.id}", {notification_count: receiver.notifications.where(seen: false, kind: Notification::VALID_NOTIFICATIONS).count})
   end
 end

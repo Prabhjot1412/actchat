@@ -10,12 +10,14 @@ Rails.application.routes.draw do
     get 'public'
     get 'notifications'
     get 'friends_list'
+    get 'chats'
   end
 
   namespace :notifications do
     get 'accept'
     get 'reject'
     get 'send_notification'
+    get 'fetch_chats'
   end
 
   resource :user_detail, only: [:update]

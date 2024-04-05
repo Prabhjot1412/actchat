@@ -4,3 +4,6 @@ import "controllers"
 
 import './src/fetch_posts'
 import "channels"
+
+import "trix"
+import "@rails/actiontext"

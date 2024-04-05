@@ -1,5 +1,6 @@
 <div class='d-flex' data-controller='notification'>
   <h1 id='personel'><%=person.user_name.titleize%>'s Page</h1>
+
   <% if person != current_user %>
     <% unless person.friends_with?(current_user) %>
       <i

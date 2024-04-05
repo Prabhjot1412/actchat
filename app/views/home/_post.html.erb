@@ -10,7 +10,7 @@
       </h5>
 
       <% if post.image.attached? %>
-        <img class='my-3 ' src='<%=url_for(post.image)%>' width='900' height='500'>
+        <img class='my-3' src='<%=url_for(post.image)%>' width='900' height='500'>
       <% end %>
 
       <p class="card-text mt-3" style='margin-left: 9px; max-height: 30rem; overflow: auto'> <%= post.text %> </p>

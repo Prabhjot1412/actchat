@@ -23,12 +23,20 @@
 
   <a href='<%= home_notifications_path %>' class='list-group-item p-2 py-3 <%= active == 'notifications' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>' data-action='sidebar#reset_page'>
     <i class="fa-regular fa-bell fa-xl" style='margin-left: 2px'></i>
-    <span class='hidden-when-collapsed' hidden>Notifications</span>
-    <span id='notification-count' class='notices-notification-count'><%= @notifications.count == 0 ? '' : @notifications.count  %></span>
+  
+    <span class='hidden-when-collapsed' hidden> Notifications </span>
+  
+    <span id='notification-count' class='notices-notification-count'><%= @notifications.where(seen: false, kind: Notification::VALID_NOTIFICATIONS).count == 0 ? '' : @notifications.where(seen: false, kind: Notification::VALID_NOTIFICATIONS).count  %></span>
   </a>
 
   <a href='<%= home_friends_list_path %>' class='list-group-item p-2 py-3 <%= active == 'friends' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>' data-action='sidebar#reset_page'>
     <i class="fa-regular fa-address-book fa-xl" style='margin-left: 2px'></i>
+
+    <span class='hidden-when-collapsed' hidden>Friends list</span>
+  </a>
+
+  <a href='<%= home_chats_path %>' class='list-group-item p-2 py-3 <%= active == 'chats' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>' data-action='sidebar#reset_page'>
+    <i class="fa-regular fa-comments fa-xl" style='margin-left: 2px'></i>
 
     <span class='hidden-when-collapsed' hidden>Friends list</span>
   </a>
