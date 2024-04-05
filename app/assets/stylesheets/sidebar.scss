@@ -1,0 +1,47 @@
+@keyframes floatable{
+  0%{top:     0}
+  25%{top: -1px}
+  50%{top:    0}
+  75%{top:  1px}
+  100%{top:   0}
+}
+
+.sidebar{
+  min-width: 0;
+  min-height: 0;
+  transition: .25s min-width, .25s min-height;
+}
+
+.side-bar-active, .side-bar-inactive{
+  transition: .5s background-color, .5s color;
+}
+
+.side-bar-active:hover, .side-bar-inactive:hover{
+  background-color: #7ce0f4;
+  color: #087e95;
+}
+
+.side-bar-expand{
+  position: absolute;
+  z-index: 1;
+  font-size: small;
+  left: 42px;
+  color: rgba(41, 41, 41, 0.503);
+  background: unset;
+  border: .5px solid rgba(0, 0, 0, 0.14);
+  border-left: unset;
+  border-top: unset;
+  transition: .5s color;
+}
+
+.side-bar-expand:hover{
+  color: rgb(41, 41, 41);
+}
+
+.floatable:hover{
+  animation: ease-in-out;
+  animation-name: floatable;
+  animation-duration: .4s;
+  animation-iteration-count: infinite;
+  position: relative;
+}

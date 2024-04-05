@@ -6,7 +6,5 @@ class CreateUserDetails < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-
-    add_index :user_details, [:user_name, :user_id], unique: true, name: 'index_user_name_user_id'
   end
 end

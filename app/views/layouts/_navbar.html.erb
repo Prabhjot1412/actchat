@@ -7,7 +7,11 @@
 
   <form class="form-inline d-flex">
     <% if user_signed_in? %>
-      <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'mx-3 btn btn-outline-warning'%>
+      <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: 'mx-3 btn btn-outline-warning' do %>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+        Sign out
+      <% end %>
     <% else %>
       <a href='<%= new_user_registration_path %>' class='btn btn-outline-info mx-1'>
         <i class="fa-solid fa-user-plus"></i>
