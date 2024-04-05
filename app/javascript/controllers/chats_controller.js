@@ -39,6 +39,8 @@ export default class extends Controller {
       return response.json()
     }).then((data) => {
 
+      chats_holder.innerHTML = ''
+
       data.forEach(noti => {
         chats_holder.innerHTML += chat_message(noti["sent_by_current?"], noti["sender_avatar_url"], noti["data"])
       });

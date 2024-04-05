@@ -19,8 +19,7 @@ class HomeController < ApplicationController
 
   def friends_list ; end
 
-  def chats
-  end
+  def chats; end
 
   private
 
