@@ -27,11 +27,11 @@ export default class extends Controller {
       sidebarExpander.style.left = '160px'
       sidebarExpander.style.transform = 'rotate(180deg)'
     } else {
-      sidebar.style.minWidth = '2rem'
+      sidebar.style.minWidth = '3rem'
       sidebar.style.minHeight = '0'
       sidebar.style.maxHeight = '700px'
 
-      sidebarExpander.style.left = '42px'
+      sidebarExpander.style.left = '46px'
       sidebarExpander.style.transform = 'rotate(0deg)'
     }
   }

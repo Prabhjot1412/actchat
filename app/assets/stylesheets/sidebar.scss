@@ -7,7 +7,7 @@
 }
 
 .sidebar{
-  min-width: 0;
+  min-width: 3rem;
   min-height: 0;
   transition: .5s min-width, .5s min-height;
 }
@@ -25,7 +25,7 @@
   position: absolute;
   z-index: 1;
   font-size: small;
-  left: 42px;
+  left: 46px;
   color: rgba(41, 41, 41, 0.503);
   background: unset;
   border: .5px solid rgba(0, 0, 0, 0.14);
@@ -49,4 +49,8 @@
 .hidden-when-collapsed {
   position: absolute;
   left: 40px;
+}
+
+a.list-group-item{
+  margin-left: 2.5px;
 }
