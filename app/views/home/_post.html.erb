@@ -1,0 +1,17 @@
+<div class='d-flex justify-content-center py-3' style='padding-bottom: 5px;'>
+  <div class="card" style="width: 60rem">
+    <div class="card-body">
+      <h5 class="card-title">
+        <img src='<%= url_for(post.owner.avatar.image) %>' width="30" height="30" class='rounded'>
+
+        <span style='margin-left: 8px'> <%= post.owner.user_name %> </span>
+      </h5>
+
+      <% if post.image.attached? %>
+        <img class='my-3 ' src='<%=url_for(post.image)%>' width='900' height='500'>
+      <% end %>
+
+      <p class="card-text mt-3" style='margin-left: 9px; max-height: 30rem; overflow: auto'> <%= post.text %> </p>
+    </div>
+  </div>
+</div>

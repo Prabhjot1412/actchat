@@ -13,5 +13,11 @@
       Create New Post
     </button>
 
-    <hr>
+    <hr style='margin-bottom: 0; margin-right: 25px'>
+
+    <div style='margin-right: 25px; background: #f6f6f6'>
+      <% Post.all.each do |p| %>
+        <%= render 'post', post: p %>
+      <% end %>
+    </div>
 <% end %>

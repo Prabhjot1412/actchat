@@ -1,6 +1,13 @@
 <div data-turbo='false'>
-  <%= form_for current_user.posts.new do |f| %>
-    <div>
+  <%= form_for @post do |f| %>
+    <div data-controller='preview'>
+      <div class='d-flex flex-column mb-5'>
+        <%= f.label :image %>
+        <%= f.file_field :image, id: 'file_field', "data-action": 'change->preview#preview_image' %>
+      </div>
+
+      <img id='preview' hidden width='680' height='360'>
+
       <div class='d-flex flex-column'>
         <%= f.label :text %>
         <%= f.text_area :text %>

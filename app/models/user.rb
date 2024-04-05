@@ -11,6 +11,10 @@ class User < ApplicationRecord
 
   after_create :create_user_details, :set_default_avatar
 
+  def user_name
+    self.user_detail.user_name
+  end
+
   private
 
   def create_user_details
