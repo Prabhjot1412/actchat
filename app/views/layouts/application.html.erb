@@ -14,9 +14,9 @@
     <%= render 'layouts/navbar'%>
 
     <% if flash[:notice].present? %>
-      <p class="alert alert-info"><%= notice %></p>
+      <p class="alert alert-info notices-fadeout"><%= notice %></p>
     <% elsif flash[:alert].present? %>
-      <p class="alert alert-danger"><%= alert %></p>
+      <p class="alert alert-danger notices-fadeout"><%= alert %></p>
     <%end%>
 
     <%= yield %>

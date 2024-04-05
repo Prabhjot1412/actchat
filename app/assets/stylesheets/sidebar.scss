@@ -9,7 +9,7 @@
 .sidebar{
   min-width: 0;
   min-height: 0;
-  transition: .25s min-width, .25s min-height;
+  transition: .5s min-width, .5s min-height;
 }
 
 .side-bar-active, .side-bar-inactive{
@@ -31,7 +31,7 @@
   border: .5px solid rgba(0, 0, 0, 0.14);
   border-left: unset;
   border-top: unset;
-  transition: .5s color;
+  transition: .5s color, left 0.5s ease 0s;;
 }
 
 .side-bar-expand:hover{
@@ -44,4 +44,9 @@
   animation-duration: .4s;
   animation-iteration-count: infinite;
   position: relative;
+}
+
+.hidden-when-collapsed {
+  position: absolute;
+  left: 40px;
 }

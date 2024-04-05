@@ -1,0 +1,14 @@
+@keyframes fadeout{
+  0%{opacity: 100%}
+  25%{opacity: 75%}
+  50%{opacity: 50%}
+  75%{opacity: 25%}
+  100%{opacity: 0%; display: none;}
+}
+
+.notices-fadeout{
+  animation: ease-in-out;
+  animation-name: fadeout;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}

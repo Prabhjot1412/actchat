@@ -1,0 +1,9 @@
+<%=  turbo_frame_tag 'home' do %>
+  <div class='d-flex'>
+    <%= render 'sidebar', active: active %>
+
+    <div  style='min-height: 40rem; margin-left: 30px'>
+      <%= yield %>
+    </div>
+  </div>
+<% end %>

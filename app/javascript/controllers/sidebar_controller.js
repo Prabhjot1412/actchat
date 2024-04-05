@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    console.log("side bar")
+    console.log("sidebar")
   }
 
   toggle_sidebar() {
