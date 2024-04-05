@@ -1,13 +1,25 @@
 <%= render 'homepage', active: 'profile' do %>
   <h1>Profile</h1>
-  
-  <%= form_for current_user.user_detail do |f| %>
-    <div>
-      <%= f.label :user_name %>
-      <%= f.text_field :user_name, class: 'mx-5'%>
-    </div>
-    <div>
-      <%= f.submit :Save, class: 'mt-2 btn btn-outline-success' %>
-    </div>
-  <% end %>
+
+  <div>
+    <%= form_for current_user.avatar do |f| %>
+      <div style='margin-bottom: 30px'>
+        <%= f.label :image %>
+        <%= f.file_field :image, style: 'margin-left: 30px'%>
+        <%= f.submit :save, class: 'btn btn-outline-primary'%>
+      </div>
+    <% end %>
+
+    <hr>
+
+    <%= form_for current_user.user_detail do |f| %>
+      <div>
+        <%= f.label :user_name %>
+        <%= f.text_field :user_name, class: 'mx-5'%>
+      </div>
+      <div>
+        <%= f.submit :Save, class: 'mt-2 btn btn-outline-success' %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
