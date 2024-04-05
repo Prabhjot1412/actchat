@@ -5,14 +5,46 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy, foreign_key: :owner_id
+  has_many :notifications, dependent: :destroy, foreign_key: :sender_id
+
   has_one :user_detail, dependent: :destroy
   has_one :user_avatar
   has_one :avatar, through: :user_avatar
 
   after_create :create_user_details, :set_default_avatar
 
+  validates :email, uniqueness: true
+
   def user_name
     self.user_detail.user_name
+  end
+
+  def befriend(user)
+    raise "invalid argument #{user}" unless user.is_a?(User)
+
+    self.friends_list[user.id] = user.email
+    user.friends_list[self.id] = self.email
+
+    self.save!
+    user.save!
+  end
+
+  def friends
+    User.where(id: self.friends_list.keys)
+  end
+
+  def unfriend(user)
+    raise "invalid argument #{user}" unless user.is_a?(User)
+
+    self.friends_list.delete(user.id.to_s)
+    user.friends_list.delete(self.id.to_s)
+
+    self.save!
+    user.save!
+  end
+
+  def friends_with?(user)
+    self.friends.find_by(id: user.id).present?
   end
 
   private

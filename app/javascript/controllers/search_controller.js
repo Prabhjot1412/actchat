@@ -7,7 +7,7 @@ export default class extends Controller {
 
   users(event) {
     let searchbox = document.getElementById('user_searchbox')
-  
+
     if(event.target.value == '') {
       searchbox.setAttribute('hidden', 'true')
       return
@@ -22,6 +22,7 @@ export default class extends Controller {
       return response.json()
     }).then((data) => {
       let isNotFound = !document.getElementById('user-not-found')
+
       if (!!document.getElementById('user-container')) {
         document.getElementById('user-container').remove()
       }
@@ -37,6 +38,7 @@ export default class extends Controller {
         if (!isNotFound) {
           document.getElementById('user-not-found').remove()
         }
+
         let container = document.createElement('div')
         container.setAttribute('id', 'user-container')
         searchbox.appendChild(container)

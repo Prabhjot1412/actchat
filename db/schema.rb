@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_191047) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_22_193004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_191047) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "kind"
+    t.boolean "seen"
+    t.string "data"
+    t.bigint "receiver_id"
+    t.bigint "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "owner_id"
     t.string "text"
@@ -76,6 +86,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_191047) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "friends_list", default: {}
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
