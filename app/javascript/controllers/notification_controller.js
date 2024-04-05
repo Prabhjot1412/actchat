@@ -16,6 +16,7 @@ export default class extends Controller {
     }).then((data) => {
       if (data.status == 'success') {
         document.getElementById(`notification-${notification_id}`).remove()
+
         flash_notice('Friend Request Accepted')
       } else {
         flash_alert(data.message)

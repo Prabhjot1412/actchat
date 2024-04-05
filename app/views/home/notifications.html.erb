@@ -3,7 +3,7 @@
 
   <hr style='margin-bottom: 0'>
   <div id='notifications-holder' class='requests-container p-3'>
-    <% current_user.notifications.each do |noti| %>
+    <% current_user.notifications.where(kind: Notification::VALID_NOTIFICATIONS).each do |noti| %>
       <%= render 'notification', noti: noti %>
     <% end %>
   </div>

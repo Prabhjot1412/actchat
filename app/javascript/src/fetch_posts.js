@@ -26,7 +26,6 @@ window.onscroll = function(ev) {
     let base_path = document.head.querySelector("meta[name=base_path]").content
     let res = fetch(`${base_path}posts/${getCookie('page')}${additional_params}`)
 
-
     res.then((response) => {
       return response.json()
     }).then((data) => {

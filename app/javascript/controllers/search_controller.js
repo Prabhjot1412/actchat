@@ -27,7 +27,7 @@ export default class extends Controller {
         document.getElementById('user-container').remove()
       }
 
-      if(data == false) {
+      if (data == false) {
         if (isNotFound) {
           let userNotFound = document.createElement('i')
           userNotFound.setAttribute('id', 'user-not-found')

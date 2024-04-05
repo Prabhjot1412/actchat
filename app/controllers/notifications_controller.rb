@@ -51,7 +51,9 @@ class NotificationsController < ApplicationController
 
     friend = User.find(friend_id)
 
-    notifications = Notification.chats_with(current_user, friend)
+    notifications = Notification.chats_with(current_user, friend).order(:created_at)
+    notifications.update_all(seen: true)
+
     data = notifications.as_json
 
     if data.present?
@@ -75,7 +77,10 @@ class NotificationsController < ApplicationController
   private
 
   def broadcast_notification(receiver)
-    ActionCable.server.broadcast("notification-#{receiver.id}", {notification_count: receiver.notifications.where(seen: false, kind: Notification::VALID_NOTIFICATIONS).count})
+    ActionCable.server.broadcast(
+      "notification-#{receiver.id}",
+      {notification_count: receiver.notifications.where(seen: false, kind: Notification::VALID_NOTIFICATIONS).count}
+    )
   end
 
   def create_chat_message

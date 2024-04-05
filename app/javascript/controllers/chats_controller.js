@@ -38,7 +38,6 @@ export default class extends Controller {
     res.then((response) => {
       return response.json()
     }).then((data) => {
-
       chats_holder.innerHTML = ''
 
       data.forEach(noti => {
