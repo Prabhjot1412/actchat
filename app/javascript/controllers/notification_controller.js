@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { flash_notice, flash_alert } from "../src/flash"
 
 export default class extends Controller {
   connect() {
@@ -15,6 +16,7 @@ export default class extends Controller {
     }).then((data) => {
       if (data.status == 'success') {
         document.getElementById(`notification-${notification_id}`).remove()
+        flash_notice('Friend Request Accepted')
       } else {
         alert(data.message)
       }
@@ -32,7 +34,7 @@ export default class extends Controller {
       if (data.status == 'success') {
         document.getElementById(`notification-${notification_id}`).remove()
       } else {
-        alert(data.message)
+        flash_alert(data.message)
       }
     })
   }
