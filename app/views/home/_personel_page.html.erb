@@ -1,16 +1,25 @@
 <div class='d-flex' data-controller='notification'>
   <h1 id='personel'><%=person.user_name.titleize%>'s Page</h1>
   <% if person != current_user %>
-    <i
-      id='friend-request-icon'
-      class="fa-solid fa-user-plus mx-1 friend-request-send align-self-center"
-      data-action='click->notification#send'
-      title='Send friend request'
-      style='margin-bottom: 17px; cursor: pointer'
-      sender-id=<%= current_user.id %>
-      receiver-id=<%= person.id %>
-    >
-    </i>
+    <% unless person.friends_with?(current_user) %>
+      <i
+        id='friend-request-icon'
+        class="fa-solid mx-1 <%= person.notifications.find_by(sender_id: current_user.id) ? 'friend-request-sent fa-user-minus' : 'friend-request-send fa-user-plus' %> align-self-center"
+        data-action='click->notification#send'
+        title='Send friend request'
+        style='margin-bottom: 17px; cursor: pointer'
+        sender-id=<%= current_user.id %>
+        receiver-id=<%= person.id %>
+      >
+      </i>
+    <% else %>
+      <i
+        class="fa-solid mx-1 fa-check align-self-center"
+        title='Already friends'
+        style='margin-bottom: 17px; color: blue'
+      >
+      </i>
+    <% end %>
   <% end %>
 </div>
 

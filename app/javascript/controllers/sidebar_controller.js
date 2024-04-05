@@ -12,7 +12,11 @@ export default class extends Controller {
     let sidebarExpander = document.getElementById('sidebar-expander')
 
     for(let element of list_elements) {
-      setTimeout(() => {element.toggleAttribute('hidden')}, 150)
+      if (element.getAttribute('hidden') == '') {
+        setTimeout(() => {element.toggleAttribute('hidden')}, 250)
+      } else {
+        element.toggleAttribute('hidden')
+      }
     }
 
     if (sidebar.style.minWidth != '10rem') {

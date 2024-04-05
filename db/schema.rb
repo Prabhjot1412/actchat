@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_193004) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "kind"
-    t.boolean "seen"
+    t.boolean "seen", default: false
     t.string "data"
     t.bigint "receiver_id"
     t.bigint "sender_id"

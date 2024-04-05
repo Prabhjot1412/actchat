@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'profile'
     get 'public'
     get 'notifications'
+    get 'friends_list'
   end
 
   namespace :notifications do

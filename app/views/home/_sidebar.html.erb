@@ -26,4 +26,10 @@
 
     <span class='hidden-when-collapsed' hidden>Notifications</span>
   </a>
+
+  <a href='<%= home_friends_list_path %>' class='list-group-item p-2 py-3 <%= active == 'friends' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>' data-action='sidebar#reset_page'>
+    <i class="fa-regular fa-address-book fa-xl" style='margin-left: 2px'></i>
+
+    <span class='hidden-when-collapsed' hidden>Friends list</span>
+  </a>
 </div>

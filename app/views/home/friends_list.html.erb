@@ -1,0 +1,42 @@
+<%= render 'homepage', active: 'friends' do %>
+  <h1 style='margin-left: 5rem; margin-top: 5px'>Friends List</h1>
+
+  <hr style='margin-bottom: 0'>
+
+  <%= turbo_frame_tag 'freinds list' do %>
+    <% current_user.friends.page(params[:page_no] || 1).per(10).each do |friend| %>
+      <div class='d-flex justify-content-center py-3' style='padding-bottom: 5px;'>
+        <a data-turbo='false' href='/home/public?id=<%= friend.id %>' style='text-decoration: none;'>
+          <div class="card" style="width: 60rem">
+            <div class="card-body">
+              <h5 class="card-title">
+                <img src='<%= url_for(friend.avatar.image) %>' width="30" height="30" class='rounded'>
+
+                <span style='margin-left: 8px'> <%= friend.user_name %> </span>
+              </h5>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+
+    <div class='d-flex' style='margin-left: 270px'>
+      <div style='margin-right: 10px'>
+        <%= 
+          link_to 'Previous',
+          "/home/friends_list?page_no=#{params[:page_no] ? (params[:page_no].to_i)-1 : 0}",
+          class: "btn btn-outline-primary #{ (params[:page_no].to_i) <= 1 ? 'disabled' : '' }"
+        %>
+      </div>
+
+      <div>
+        <%=
+          link_to 'Next',
+          "/home/friends_list?page_no=#{params[:page_no] ? (params[:page_no].to_i)+1 : 2}",
+          class: "btn btn-outline-primary #{current_user.friends.page((((params[:page_no]) || 1).to_i) +1).per(10).count == 0 ? 'disabled' : '' }"
+        %>
+      </div>
+    </div>
+  <% end %>
+  
+<% end %>

@@ -15,6 +15,9 @@ class HomeController < ApplicationController
 
   def notifications ; end
 
+  def friends_list
+  end
+
   private
 
   def set_notifications
