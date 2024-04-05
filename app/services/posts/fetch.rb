@@ -1,6 +1,5 @@
 module Posts
   class Fetch
-
     class << self
       def call(type:, user:, page:, &url_for)
         return fetch_posts(user, page, url_for) unless type.present?
@@ -10,12 +9,12 @@ module Posts
       private
 
       def fetch_posts(user, page, url_for)
-        data = Post.order(created_at: :desc).page(page).per(2)
+        data = Post.order(created_at: :desc).page(page)
         fetch_data(data, url_for)
       end
 
       def fetch_personel_posts(user, page, url_for)
-        data = Post.where(owner_id: user.id).order(created_at: :desc).page(page).per(2)
+        data = Post.where(owner_id: user.id).order(created_at: :desc).page(page)
 
         fetch_data(data, url_for)
       end

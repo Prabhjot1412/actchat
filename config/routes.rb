@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resource :posts, only: [:create]
 
   get 'posts/:page_id', to: 'posts#fetch_posts'
+  get 'users', to: 'users#fetch_users'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

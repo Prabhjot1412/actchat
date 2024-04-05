@@ -1,0 +1,33 @@
+@keyframes fadein{
+  0%{opacity: 0%}
+  25%{opacity: 25%}
+  50%{opacity: 50%}
+  75%{opacity: 75%}
+  100%{opacity: 100%}
+}
+
+.searchbox-result-holder{
+  position: absolute;
+  height: 10rem;
+  border: .5px solid black;
+  border-radius: 3px;
+  width: 24rem;
+  background-color: white;
+
+  animation: ease-in-out;
+  animation-name: fadein;
+  animation-duration: .15s;
+}
+
+.searchbox-user-not-found{
+  margin: 5rem;
+  margin-left: 9.5rem;
+  font-size: 5rem;
+  color: gainsboro;
+}
+
+a.searchbox-user-data{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}

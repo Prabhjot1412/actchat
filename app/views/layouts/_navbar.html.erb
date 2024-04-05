@@ -5,6 +5,19 @@
     ActChat
   </a>
 
+  <div>
+    <div data-controller='search' class="input-group rounded" style='width: 25rem'>
+      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" data-action='keyup->search#users'/>
+
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
+    </div>
+
+    <div id='user_searchbox' class='searchbox-result-holder' style='top:50px; overflow: auto' hidden>
+    </div>
+  </div>
+
   <form class="form-inline d-flex">
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: 'mx-3 btn btn-outline-warning' do %>
