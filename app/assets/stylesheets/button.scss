@@ -1,0 +1,31 @@
+i.friend-request-send {
+  cursor: pointer;
+  color: blue;
+  transition: .3s color, transform .2s;
+}
+
+i.friend-request-send:hover {
+  cursor: pointer;
+  color: rgb(0, 0, 220);
+}
+
+i.friend-request-send:active {
+  cursor: pointer;
+  color: rgb(0, 0, 160);
+}
+
+i.friend-request-sent {
+  cursor: pointer;
+  color: red;
+  transition: .3s color, transform .2s;
+}
+
+i.friend-request-sent:hover {
+  cursor: pointer;
+  color: rgb(158, 0, 0);
+}
+
+i.friend-request-sent:active {
+  cursor: pointer;
+  color: rgb(91, 0, 0);
+}

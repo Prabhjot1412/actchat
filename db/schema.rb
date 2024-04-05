@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_193004) do
     t.bigint "sender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["kind", "sender_id", "receiver_id"], name: "index_kind_sender_receiver_id", unique: true
   end
 
   create_table "posts", force: :cascade do |t|

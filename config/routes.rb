@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :notifications do
     get 'accept'
     get 'reject'
+    get 'send_notification'
   end
 
   resource :user_detail, only: [:update]
