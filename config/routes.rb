@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'reject'
     get 'send_notification'
     get 'fetch_chats'
+    post 'create'
   end
 
   resource :user_detail, only: [:update]

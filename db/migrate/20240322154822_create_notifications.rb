@@ -9,7 +9,5 @@ class CreateNotifications < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-
-    add_index :notifications, [:kind, :sender_id, :receiver_id], unique: true, name: 'index_kind_sender_receiver_id'
   end
 end

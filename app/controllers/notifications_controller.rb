@@ -68,9 +68,20 @@ class NotificationsController < ApplicationController
     render json: data
   end
 
+  def create
+    create_chat_message if params[:kind] == 'chat'
+  end
+
   private
 
   def broadcast_notification(receiver)
     ActionCable.server.broadcast("notification-#{receiver.id}", {notification_count: receiver.notifications.where(seen: false, kind: Notification::VALID_NOTIFICATIONS).count})
+  end
+
+  def create_chat_message
+    friend_id = params[:friend_id].to_i
+    message = params[:data]
+    
+    Notification.send_message(current_user.id, friend_id, message)
   end
 end

@@ -7,11 +7,17 @@ export default class extends Controller {
 
   show_chats(event) {
     let friend = event.target
+    let editor = document.getElementById('text-editor')
+    let form = document.getElementById('chat-form')
+
     if (!friend.classList.contains('chats')) {
       friend = friend.parentElement
     }
     let friend_id = friend.getAttribute('friend-id')
     let chats_holder = document.getElementById('chats-holder')
+
+    editor.removeAttribute('hidden')
+    form.setAttribute('action', `/notifications/create?kind=chat&friend_id=${friend_id}`)
 
     let current_active = document.getElementById('chats-friend-item-active')
     if (current_active) {

@@ -37,6 +37,10 @@ class Notification < ApplicationRecord
     self.destroy if self.kind == 'friend_request'
   end
 
+  def self.send_message(sender_id, receiver_id, data)
+    create(kind: 'chat', sender_id: sender_id, receiver_id: receiver_id, data: data)
+  end
+
   private
 
   def accept_friend_request
