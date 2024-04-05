@@ -72,3 +72,7 @@ gem "sassc-rails", "~> 2.1"
 gem "font-awesome-sass", "~> 6.5"
 gem "devise", "~> 4.9"
 gem "kaminari", "~> 1.2"
+
+gem "omniauth-google-oauth2", "~> 1.1"
+
+gem "open-uri", "~> 0.4.1"
