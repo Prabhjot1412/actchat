@@ -6,16 +6,20 @@
   </a>
 
   <form class="form-inline d-flex">
-    <a href='<%= new_user_registration_path %>' class='btn btn-outline-info mx-1'>
-      <i class="fa-solid fa-user-plus"></i>
+    <% if user_signed_in? %>
+      <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'mx-3 btn btn-outline-warning'%>
+    <% else %>
+      <a href='<%= new_user_registration_path %>' class='btn btn-outline-info mx-1'>
+        <i class="fa-solid fa-user-plus"></i>
 
-      Sign Up
-    </a>
+        Sign Up
+      </a>
 
-    <a href='<%= user_session_path %>' class='btn btn-outline-primary mx-2'>
-      <i class="fa-solid fa-arrow-right-to-bracket"></i>
+      <a href='<%= user_session_path %>' class='btn btn-outline-primary mx-2'>
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
 
-      Log In
-    </a>
+        Log In
+      </a>
+    <% end %>
   </form>
 </nav>
