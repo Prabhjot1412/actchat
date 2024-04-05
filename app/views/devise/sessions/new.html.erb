@@ -1,26 +1,56 @@
-<h2>Log in</h2>
+<%= turbo_frame_tag 'sign_up_or_log_in' do %>
+  <div class='d-flex flex-column align-items-center my-5'>
+    <div class="m-3">
+      <a class='btn rounded p-2 px-5' style='background: #e2eaf7; color: #2f5aa2;'>Log In</a>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <a href='<%= new_user_registration_path%>' class='btn rounded p-2 px-5 mx-3' style='color: rgb(0 0 0 / 55%); background: #eeeeee'>Register</a>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div style='width: 45%' data-turbo="false">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="text-center mb-3">
+          <p>Sign In with:</p>
+
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+
+        <p class="text-center">or:</p>
+
+        <div data-mdb-input-init class="form-outline mb-4">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          
+          <%= f.label :email, class: 'form-label' %>
+        </div>
+
+        <div data-mdb-input-init class="form-outline mb-4">
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+
+          <%= f.label :password, class: 'form-label' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4" style="margin-left: 10rem; width: 50%">Log In</button>
+      <%end%>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<%end%>
