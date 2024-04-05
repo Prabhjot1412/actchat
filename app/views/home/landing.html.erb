@@ -1,3 +1,17 @@
 <%= render 'homepage', active: 'landing' do %>
+    <%= render 'shared/modal', title: 'Create New Post' do %>
+      <%= render 'create_post_form' %>
+    <% end %>
+
     <h1 style='margin-left: 5rem; margin-top: 5px'>Home</h1>
+
+    <hr>
+
+    <button class='btn btn-outline-success' style='margin-left: 15px' data-controller="modal" data-action="click->modal#toggle_modal">
+      <i class="fa-solid fa-square-plus"></i>
+
+      Create New Post
+    </button>
+
+    <hr>
 <% end %>

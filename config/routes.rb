@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resource :user_detail, only: [:update]
   resource :avatar, only: [:update]
+  resource :posts, only: [:create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
