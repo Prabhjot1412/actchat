@@ -1,0 +1,10 @@
+<%= render 'homepage', active: 'notifications' do %>
+  <h1 style='margin-left: 5rem; margin-top: 5px'>Notifications</h1>
+
+  <hr style='margin-bottom: 0'>
+  <div class='requests-container p-3'>
+    <% current_user.notifications.each do |noti| %>
+      <%= render 'notification', noti: noti %>
+    <% end %>
+  </div>
+<% end %>

@@ -12,7 +12,7 @@
       <p>Hey there, I am using ActChat</p> <%# to-do add bio %>
     </div>
   </div>
-    <div id='posts_container' style='margin-right: 25px; background: #f6f6f6'>
+    <div id='posts_container' class='posts-container' style='margin-right: 25px'>
       <% Post.where(owner_id: person.id).order(created_at: :desc).page(1).per(2).each do |p| %>
         <%= render 'post', post: p %>
       <% end %>

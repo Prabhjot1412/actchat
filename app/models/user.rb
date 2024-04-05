@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy, foreign_key: :owner_id
-  has_many :notifications, dependent: :destroy, foreign_key: :sender_id
+  has_many :notifications, dependent: :destroy, foreign_key: :receiver_id
 
   has_one :user_detail, dependent: :destroy
   has_one :user_avatar
@@ -45,6 +45,12 @@ class User < ApplicationRecord
 
   def friends_with?(user)
     self.friends.find_by(id: user.id).present?
+  end
+
+  def send_friend_request_to(user)
+    raise "invalid argument #{user}" unless user.is_a?(User)
+
+    user.notifications.create!(kind: :friend_request, sender: self)
   end
 
   private

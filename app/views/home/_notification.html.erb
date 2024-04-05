@@ -1,0 +1,21 @@
+<div id='notification-<%= noti.id %>' class='notification'>
+  <div class='my-2' data-controller='notification'>
+    <div class="card" style="width: 60rem">
+      <div class="card-body">
+        <h5 class="card-title" style='color: blue'> <%= noti.kind.titleize %> </h5>
+
+        <div class='d-flex justify-content-between'>
+        <p class="card-text mt-3" style='margin-left: 9px; max-height: 30rem; overflow: auto'>
+          You have a friend Request from <a class='profile-link' href='/home/public?id=<%= noti.sender.id %>'><%= noti.sender.user_name %></a>
+        </p>
+
+        <div>
+          <button class='btn btn-outline-success' data-action='notification#accept' notification-id=<%= noti.id %>> Accept </button>
+          <button class='btn btn-outline-danger' data-action='notification#reject' notification-id=<%= noti.id %>> Reject </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+</div>

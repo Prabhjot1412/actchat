@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     get 'personel'
     get 'profile'
     get 'public'
+    get 'notifications'
+  end
+
+  namespace :notifications do
+    get 'accept'
+    get 'reject'
   end
 
   resource :user_detail, only: [:update]
