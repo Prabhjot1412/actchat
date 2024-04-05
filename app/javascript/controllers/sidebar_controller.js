@@ -17,12 +17,14 @@ export default class extends Controller {
     if (sidebar.style.minWidth != '10rem') {
       sidebar.style.minWidth = '10rem'
       sidebar.style.minHeight = '52.9rem'
+      sidebar.style.maxHeight = 'unset'
 
       sidebarExpander.style.left = '160px'
       sidebarExpander.style.transform = 'rotate(180deg)'
     } else {
       sidebar.style.minWidth = '0'
       sidebar.style.minHeight = '0'
+      sidebar.style.maxHeight = '700px'
 
       sidebarExpander.style.left = '42px'
       sidebarExpander.style.transform = 'rotate(0deg)'

@@ -1,4 +1,5 @@
 <%= render 'homepage', active: 'landing' do %>
+  <div id='landing'>
     <%= render 'shared/modal', title: 'Create New Post' do %>
       <%= render 'create_post_form' %>
     <% end %>
@@ -15,9 +16,10 @@
 
     <hr style='margin-bottom: 0; margin-right: 25px'>
 
-    <div style='margin-right: 25px; background: #f6f6f6'>
-      <% Post.all.each do |p| %>
+    <div id='posts_container' style='margin-right: 25px; background: #f6f6f6'>
+      <% Post.page(1).per(2).each do |p| %>
         <%= render 'post', post: p %>
       <% end %>
     </div>
+  </div>
 <% end %>

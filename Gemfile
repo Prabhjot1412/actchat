@@ -75,3 +75,5 @@ gem "sassc-rails", "~> 2.1"
 gem "font-awesome-sass", "~> 6.5"
 
 gem "devise", "~> 4.9"
+
+gem "kaminari", "~> 1.2"

@@ -1,5 +1,5 @@
 class UserDetailsController < ApplicationController
-  def update    
+  def update
     current_user.user_detail.update(update_params)
     flash[:notice] = 'updated Successfully'
 
