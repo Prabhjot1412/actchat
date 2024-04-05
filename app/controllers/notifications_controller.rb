@@ -82,6 +82,13 @@ class NotificationsController < ApplicationController
     friend_id = params[:friend_id].to_i
     message = params[:data]
     
+    return unless message.present?
     Notification.send_message(current_user.id, friend_id, message)
+
+    ActionCable.server.broadcast("chat-#{friend_id}", {
+      "avatar_url" => url_for(current_user.avatar.image),
+      "message" => message,
+      'sender_id' => current_user.id
+    })
   end
 end

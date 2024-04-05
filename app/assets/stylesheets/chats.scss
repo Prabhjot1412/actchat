@@ -9,6 +9,8 @@
 .chats-holder {
   background: $grey;
   width: -webkit-fill-available;
+  overflow: auto;
+  height: 35rem;
 }
 
 .chats-friend-item{

@@ -14,16 +14,16 @@
       <% end %>
     </div>
 
-    <div class='chats-holder'>
+    <div user_avatar='<%= url_for(current_user.avatar.image) %>' id='holder' class='chats-holder'>
       <div id='chats-holder' style='width: 60%; margin-left: 15%'>
       </div>
     </div>
   </div>
 
-  <div id='text-editor' class='mt-2' hidden>
+  <div data-controller='chats' data-action='submit->chats#submit_message' id='text-editor' class='mt-2' hidden>
     <%= form_with url: notifications_create_path(kind: 'chat'), id: 'chat-form' do |form| %>
       <div class="field">
-        <%= form.rich_text_area :data %>
+        <%= form.rich_text_area :data, id: 'text-area' %>
         <%= form.submit 'Send', class: 'btn btn-outline-primary mt-3', style: 'float:right' %>
       </div>
     <% end %>

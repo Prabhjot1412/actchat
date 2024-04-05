@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { chat_message } from "../src/shared"
 
 export default class extends Controller {
   connect() {
@@ -13,8 +14,10 @@ export default class extends Controller {
     if (!friend.classList.contains('chats')) {
       friend = friend.parentElement
     }
+
     let friend_id = friend.getAttribute('friend-id')
     let chats_holder = document.getElementById('chats-holder')
+    let holder = document.getElementById('holder')
 
     editor.removeAttribute('hidden')
     form.setAttribute('action', `/notifications/create?kind=chat&friend_id=${friend_id}`)
@@ -34,23 +37,27 @@ export default class extends Controller {
 
     res.then((response) => {
       return response.json()
-    }).then((data) =>{
-      console.log(data)
+    }).then((data) => {
 
       data.forEach(noti => {
-        chats_holder.innerHTML +=
-        `
-          <div class='d-flex' style=${noti["sent_by_current?"] ? 'justify-content:end;flex-direction:row-reverse' : ''}>
-            <div>
-              <img src="${noti["sender_avatar_url"]}" width="60" height="60" class='rounded' style='margin-right: 5px; margin-top: 3px;'>
-            </div>
-
-            <div class='mx-4 my-1 chats-message'>
-              <span>${noti["data"]}</span>
-            </div>
-          </div
-        `
+        chats_holder.innerHTML += chat_message(noti["sent_by_current?"], noti["sender_avatar_url"], noti["data"])
       });
+
+      holder.scrollTop = holder.scrollHeight
     })
+  }
+
+  submit_message() {
+    let chats_holder = document.getElementById('chats-holder')
+    let sender_avatar_url = document.getElementById('holder').getAttribute('user_avatar')
+    let text_area = document.getElementById('text-area')
+    let holder = document.getElementById('holder')
+
+    if(!text_area.value) {
+      return
+    }
+
+    chats_holder.innerHTML += chat_message(true, sender_avatar_url, text_area.value)
+    holder.scrollTop = holder.scrollHeight
   }
 }
