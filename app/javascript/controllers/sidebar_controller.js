@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { setCookie } from "../src/cookies"
 
 export default class extends Controller {
   connect() {
@@ -11,7 +12,7 @@ export default class extends Controller {
     let sidebarExpander = document.getElementById('sidebar-expander')
 
     for(let element of list_elements) {
-      element.toggleAttribute('hidden')
+      setTimeout(() => {element.toggleAttribute('hidden')}, 150)
     }
 
     if (sidebar.style.minWidth != '10rem') {
@@ -22,12 +23,16 @@ export default class extends Controller {
       sidebarExpander.style.left = '160px'
       sidebarExpander.style.transform = 'rotate(180deg)'
     } else {
-      sidebar.style.minWidth = '0'
+      sidebar.style.minWidth = '2rem'
       sidebar.style.minHeight = '0'
       sidebar.style.maxHeight = '700px'
 
       sidebarExpander.style.left = '42px'
       sidebarExpander.style.transform = 'rotate(0deg)'
     }
+  }
+
+  reset_page() {
+    setCookie('page', '')
   }
 }

@@ -1,23 +1,27 @@
 import {getCookie, setCookie} from './cookies'
 
 window.onscroll = function(ev) {
-  if(document.getElementById('landing') == null) {
+  if(document.getElementById('posts_container') == null) {
     return
   }
 
-  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight -2 && window.scrollY >= 7) {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight -4 && window.scrollY >= 7) {
     if(!getCookie('page') || getCookie('page') == '') {
       setCookie('page', 2)
     } else {
       setCookie('page', parseInt(getCookie('page')) + 1)
     }
 
-    let res = fetch(`http://localhost:3000/posts/${getCookie('page')}`)
+    let additional_params = '?'
+    if(!(document.getElementById('personel') == null)) {
+      additional_params += 'type=personel&'
+    }
+
+    let res = fetch(`http://localhost:3000/posts/${getCookie('page')}${additional_params}`)
 
     res.then((response) => {
       return response.json()
     }).then((data) => {
-      console.log(data)
       let posts_container = document.getElementById('posts_container')
 
       for (var key in data) {
@@ -48,9 +52,5 @@ window.onscroll = function(ev) {
 };
 
 window.onunload = function(ev) {
-  if(document.getElementById('landing') == null) {
-    return
-  }
-
   setCookie('page', '')
 }

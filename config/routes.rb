@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :home do
     get 'landing'
+    get 'personel'
     get 'profile'
   end
 

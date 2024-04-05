@@ -1,0 +1,22 @@
+<h1 id='personel'><%=person.user_name.titleize%>'s Page</h1>
+
+<div>
+  <div class='d-flex mx-5'>
+    <div class='border border-dark p-3 my-5' style='height: fit-content; width: fit-content; margin-left: 19px'>
+      <img src='<%= url_for(person.avatar.image) %>' width='200' height='200'/>
+    </div>
+
+    <div class='border border-dark p-3 my-5' style='width: 60rem; word-wrap: break-word; overflow: auto; height: 14.6rem; margin-left: 19px'>
+      <h3>Bio: </h3>
+
+      <p>Hey there, I am using ActChat</p> <%# to-do add bio %>
+    </div>
+  </div>
+    <div id='posts_container' style='margin-right: 25px; background: #f6f6f6'>
+      <% Post.where(owner_id: person.id).order(created_at: :desc).page(1).per(2).each do |p| %>
+        <%= render 'post', post: p %>
+      <% end %>
+    </div>
+  <div>
+  </div>
+</div>

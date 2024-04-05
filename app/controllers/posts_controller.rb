@@ -11,19 +11,7 @@ class PostsController < ApplicationController
   end
 
   def fetch_posts
-    data = Post.page(params[:page_id]).per(2)
-
-    data = data.each_with_object({}) do |post, obj|
-      obj[post.id] = post.as_json
-      obj[post.id]["image_attached"] = post.image.attached?
-      obj[post.id]["owner_name"] = post.owner.user_name
-
-      if obj[post.id]["image_attached"]
-        obj[post.id]["image_url"] = url_for(post.image)
-      end
-
-      obj[post.id]["avatar_url"] = url_for(post.owner.avatar.image)
-    end
+    data = ::Posts::Fetch.call(type: params[:type], user: current_user, page: params[:page_id]) {|img| url_for(img)}
 
     render json: data
   end

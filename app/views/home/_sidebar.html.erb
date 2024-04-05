@@ -3,13 +3,19 @@
     <i class="fa-solid fa-angles-right floatable"></i>
   </button>
 
-  <a href='/' class='list-group-item p-2 py-3 <%= active == 'landing' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>'>
+  <a href='/' class='list-group-item p-2 py-3 <%= active == 'landing' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>' data-action='sidebar#reset_page'>
     <i class="fa-solid fa-house fa-xl" size='20x20'></i>
 
     <span class='hidden-when-collapsed' hidden>Home</span>
   </a>
 
-  <a href='<%= home_profile_path %>' class='list-group-item p-2 py-3 <%= active == 'profile' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>'>
+  <a href='<%= home_personel_path %>' class='list-group-item p-2 py-3 <%= active == 'personel' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>' data-action='sidebar#reset_page'>
+      <i class="fa-solid fa-user fa-xl"></i>
+
+      <span class='hidden-when-collapsed' hidden>Personel</span>
+  </a>
+
+  <a href='<%= home_profile_path %>' class='list-group-item p-2 py-3 <%= active == 'profile' ? 'list-group-item-info side-bar-active' : 'side-bar-inactive' %>' data-action='sidebar#reset_page'>
     <i class="fa-regular fa-id-card fa-xl"></i>
 
     <span class='hidden-when-collapsed' hidden>Profile</span>

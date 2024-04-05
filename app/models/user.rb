@@ -27,8 +27,9 @@ class User < ApplicationRecord
   end
 
   def set_default_avatar
-    return if self.avatar.present?
+    return if self.avatar&.image&.attached?
 
-    self.avatar = Avatar.first
+    self.avatar = Avatar.create
+    self.avatar.image.attach(io: File.open("#{Rails.root}/app/assets/images/default-avatar.png"), filename: 'default-avatar.png', content_type: 'image/png')
   end
 end

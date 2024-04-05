@@ -4,4 +4,6 @@ class HomeController < ApplicationController
   end
 
   def profile ; end
+
+  def personel ; end
 end
