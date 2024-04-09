@@ -14,6 +14,35 @@
       <% end %>
 
       <p class="card-text mt-3" style='margin-left: 9px; max-height: 30rem; overflow: auto'> <%= post.text %> </p>
+
+      <hr>
+
+      <% like_value = post.like_value(current_user) %>
+
+      <div class='d-flex'>
+        <div>
+          <span id='likes-count-<%= post.id %>'> <%= post.likes_count %> </span>
+
+          <i
+            style='margin-right: 5px;'
+            data-action='click->posts#<%= like_value == 1 ? 'unliked': 'liked'%>'
+            class="posts-clickable fa-regular fa-thumbs-up <%= 'posts-animate-liked' if like_value == 1 %> <%= 'posts-disabled' if like_value == -1 %>"
+            post-id="<%= post.id %>"
+            id="like-<%= post.id %>"
+            btn-type='like'
+          ></i>
+        </div>
+
+        <div>
+          <i
+            class="posts-clickable fa-regular fa-thumbs-down <%= 'posts-animate-liked' if like_value == -1 %> <%= 'posts-disabled' if like_value == 1 %>"
+            data-action='click->posts#<%= like_value == -1 ? 'unliked': 'liked'%>'
+            post-id="<%= post.id %>"
+            id="dislike-<%= post.id %>"
+            btn-type='dislike'
+          ></i>
+        </div>
+      </div>
     </div>
   </div>
 </div>

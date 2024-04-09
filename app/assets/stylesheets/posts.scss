@@ -1,0 +1,65 @@
+@import 'colors';
+
+@keyframes posts-liked {
+  0%{transform: rotate(0deg); color: $black;}
+  5%{transform: rotate(-20deg); color: $black;}
+  10%{transform: rotate(-40deg); color: #212929; bottom: 5px;}
+  15%{transform: rotate(-60deg); color: #212929; bottom: 5px;}
+  20%{transform: rotate(-80deg); color: #212929; bottom: 5px;}
+  25%{transform: rotate(-100deg); color: #212921; bottom: 10px}
+  30%{transform: rotate(-120deg); color: #212921; bottom: 10px}
+  35%{transform: rotate(-140deg); color: #212921; bottom: 10px}
+  40%{transform: rotate(-160deg); color: #212921; bottom: 10px}
+  45%{transform: rotate(-180deg); color: #2f4228; bottom: 15px;}
+  50%{transform: rotate(-200deg); color: #2f4228; bottom: 15px;}
+  55%{transform: rotate(-220deg); color: #2f4228; bottom: 15px;}
+  60%{transform: rotate(-240deg); color: #2f4228; bottom: 15px;}
+  65%{transform: rotate(-260deg); color: #36751f; bottom: 10px;}
+  70%{transform: rotate(-280deg); color: #36751f; bottom: 10px;}
+  75%{transform: rotate(-300deg); color: #36751f; bottom: 10px;}
+  80%{transform: rotate(-320deg); color: #36751f; bottom: 10px;}
+  85%{transform: rotate(-340deg); color: #36751f; bottom: 10px;}
+  90%{transform: rotate(-350deg); color: #36af0a; bottom: 5px;}
+  100%{transform: rotate(-360deg); color: green; bottom: 0px;}
+}
+
+@keyframes posts-unliked {
+  0%{transform: rotateY(0deg); color: green;}
+  5%{transform: rotateY(-20deg); color: #36af0a;}
+  10%{transform: rotateY(-40deg); color: #36751f;}
+  15%{transform: rotateY(-60deg); color: #36751f;}
+  20%{transform: rotateY(-80deg); color: #36751f;}
+  25%{transform: rotateY(-100deg); color: #36751f;}
+  30%{transform: rotateY(-120deg); color: #36751f;}
+  35%{transform: rotateY(-140deg); color: #2f4228;}
+  40%{transform: rotateY(-160deg); color: #2f4228;}
+  45%{transform: rotateY(-180deg); color: #2f4228;}
+  50%{transform: rotateY(-200deg); color: #212921;}
+  55%{transform: rotateY(-220deg); color: #212921;}
+  60%{transform: rotateY(-240deg); color: #212921;}
+  65%{transform: rotateY(-260deg); color: #212921;}
+  70%{transform: rotateY(-280deg); color: #212929;}
+  75%{transform: rotateY(-300deg); color: #212929;}
+  80%{transform: rotateY(-320deg); color: #212929;}
+  85%{transform: rotateY(-340deg); color: #212929;}
+  90%{transform: rotateY(-350deg);  color: $black;}
+  100%{transform: rotateY(-360deg); color: $black;}
+}
+
+.posts-clickable {
+  cursor: pointer !important;
+  position: relative;
+  transition: color .4s;
+}
+
+.posts-animate-liked {
+  animation: posts-liked .4s forwards;
+}
+
+.posts-animate-unliked {
+  animation: posts-unliked .4s forwards;
+}
+
+.posts-disabled {
+  color: gray !important;
+}

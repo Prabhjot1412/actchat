@@ -23,7 +23,12 @@ Rails.application.routes.draw do
 
   resource :user_detail, only: [:update]
   resource :avatar, only: [:update]
-  resource :posts, only: [:create]
+  resource :posts, only: [:create] do
+    collection do
+      get :vote
+      get :unlike
+    end
+  end
 
   get 'posts/:page_id', to: 'posts#fetch_posts'
   get 'users', to: 'users#fetch_users'

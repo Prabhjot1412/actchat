@@ -10,20 +10,23 @@ module Posts
 
       def fetch_posts(user, page, url_for)
         data = Post.order(created_at: :desc).page(page)
-        fetch_data(data, url_for)
+        fetch_data(data, url_for, user)
       end
 
       def fetch_personel_posts(user, page, url_for)
         data = Post.where(owner_id: user.id).order(created_at: :desc).page(page)
 
-        fetch_data(data, url_for)
+        fetch_data(data, url_for, user)
       end
 
-      def fetch_data(data, url_for)
+      def fetch_data(data, url_for, user)
         data.each_with_object({}) do |post, obj|
           obj[post.id] = post.as_json
           obj[post.id]["image_attached"] = post.image.attached?
           obj[post.id]["owner_name"] = post.owner.user_name
+          obj[post.id]["like_value"] = post.like_value(user)
+          obj[post.id]["id"] = post.id
+          obj[post.id]["likes_count"] = post.likes_count
 
           if obj[post.id]["image_attached"]
             obj[post.id]["image_url"] = url_for.call(post.image)

@@ -47,6 +47,33 @@ window.onscroll = function(ev) {
               ${post.image_attached ? `<img class='my-3 ' src='${post.image_url}' width='900' height='500'>` : ''}
 
               <p class="card-text mt-3" style='margin-left: 9px; max-height: 30rem; overflow: auto'> ${post.text} </p>
+
+              <hr>
+        
+              <div class='d-flex'>
+                <div>
+                  <span id='likes-count-${post.id}'> ${post.likes_count} </span>
+        
+                  <i
+                    style='margin-right: 5px;'
+                    data-action='click->posts#${post.like_value == 1 ? 'unliked' : 'liked'}'
+                    class="posts-clickable fa-regular fa-thumbs-up ${post.like_value == 1 ? 'posts-animate-liked' : '' } ${ post.like_value == -1 ? 'posts-disabled' : '' }"
+                    post-id="${post.id}"
+                    id="like-${post.id}"
+                    btn-type='like'
+                  ></i>
+                </div>
+        
+                <div>
+                  <i
+                    class="posts-clickable fa-regular fa-thumbs-down ${post.like_value == -1 ? 'posts-animate-liked' : '' } ${ post.like_value == 1 ? 'posts-disabled' : '' }"
+                    data-action='click->posts#${post.like_value == -1 ? 'unliked' : 'liked'}'
+                    post-id="${post.id}"
+                    id="dislike-${post.id}"
+                    btn-type='dislike'
+                  ></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>

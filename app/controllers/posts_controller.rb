@@ -17,6 +17,19 @@ class PostsController < ApplicationController
     render json: data
   end
 
+  def vote
+    raise 'type or id is empty' unless params[:type].present? && params[:post_id].present?
+
+    value = params[:type] == 'like' ? 1 : -1
+    Post.find(params[:post_id]).vote(current_user, value)
+  end
+
+  def unlike
+    raise 'id is empty' unless params[:post_id].present?
+
+    Post.find(params[:post_id]).unlike(current_user)
+  end
+
   private
 
   def create_params

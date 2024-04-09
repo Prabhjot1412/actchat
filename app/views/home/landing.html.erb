@@ -16,7 +16,7 @@
 
     <hr style='margin-bottom: 0; margin-right: 25px'>
 
-    <div id='posts_container' class='posts-container' style='margin-right: 25px'>
+    <div id='posts_container' data-controller='posts' class='posts-container' style='margin-right: 25px'>
       <% Post.order(created_at: :desc).page(1).per(2).each do |p| %>
         <%= render 'post', post: p %>
       <% end %>
