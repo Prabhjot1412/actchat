@@ -25,7 +25,7 @@ export default class extends Controller {
     let like_value = like_button.classList.contains('posts-disabled') ? 2 : 1
 
     fetch(`/posts/vote?post_id=${post_id}&type=${btn_type}`)
-    
+
     if (btn_type == 'like') {
       likes_count.innerText = parseInt(likes_count.innerText) + like_value
     } else {

@@ -7,3 +7,11 @@ import "channels"
 
 import "trix"
 import "@rails/actiontext"
+
+window.addEventListener('blur', () => {
+  document.title = 'Come Back °՞(ᗒᗣᗕ)՞°'
+})
+
+window.addEventListener('focus', () => {
+  document.title = 'Actchat'
+})
